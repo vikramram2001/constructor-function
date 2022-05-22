@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="products.css">
+</head>
+<body>
+    <h1>Product page</h1>
+    <div id="product" >
+    
+    
+</div>
+    
+</body>
+</html>
+
+<script>
+
+
+//var product=document.querySelector("#product")
+ var Arr=JSON.parse(localStorage.getItem("products"))
+console.log(Arr)
+
+//all Function{
+   Arr.forEach(function(elem){
+      
+      var parent=document.createElement("div");
+
+
+      var Imageurl=document.createElement("img");
+      Imageurl.setAttribute("src",elem.Image);
+
+
+      var ProductName=document.createElement("h2");
+     ProductName.innerText=elem.ProductName;
+
+      var Category=document.createElement("p");
+      Category.innerText=elem.Category;
+
+      var Price=document.createElement("p")
+      Price.innerText=elem.price;
+
+      var Gender=document.createElement("p")
+      Gender.innerText=elem.Gender;
+      
+
+     
+      var btn1=document.createElement("button")
+      btn1.innerText="Sold"
+      btn1.style.backgroundColor="Green";
+      btn1.style.cursor="pointer";
+      
+
+      var btn=document.createElement("button")
+      btn.innerText="DELETE"
+      btn.style.backgroundColor="orange";
+      btn.style.cursor="pointer";
+      btn.addEventListener("click",function(event){
+       
+       event.target.parentNode.remove();
+
+    })
+
+    parent.append(Imageurl,ProductName, Category,Price, Gender,btn1,btn)
+   product.append(parent);
+   //console.log(product)
+
+   function bekde(){
+       if( btn1.innerText="Sold"==="True")
+       {
+        btn1.style.backgroundColor="red";
+       }
+       else if( btn1.innerText="Sold"==="False")
+       {
+        btn1.style.backgroundColor="green";
+       }
+       bekde()
+    }
+
+   
+       })
+
+     
+ </script>

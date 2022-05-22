@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce</title>
+</head>
+<body>
+    <form  onsubmit="myproduct(event)" id="mall">
+        <input type="text" id="name" placeholder="ProductName">
+        <select  id="category">
+            <option value="">Select Category</option>
+            <option value="Clothes">Clothes</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Toys">Toys</option>
+        </select>
+        <input id="img" placeholder="Image Url">
+        <input  id="price" type="number" placeholder="Product Price">
+        <select  id="Gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <select  id="sold">
+            <option value="False">False</option>
+            <option value="True">True</option>
+        </select>
+        <input type="submit">
+    </form>
+
+    
+</body>
+</html>
+<script>
+    // document.querySelector("#mall").addEventListener("onsubmit",myproduct)
+
+    function product(ProductName,Category,Image,price,Gender,sold){
+        this.ProductName=ProductName;
+        this.Category=Category;
+        this.Image=Image;
+        this.price=price;
+        this.Gender=Gender;
+        this.sold=sold;
+    }
+
+    let arr= JSON.parse(localStorage.getItem("products"))||[];
+
+    function myproduct(event){
+        event.preventDefault();
+
+        let form=document.getElementById("mall");
+        let ProductName=form.name.value;
+        let Category=form.category.value;
+        let Image=form.img.value;
+        let price=form.price.value;
+        let Gender=form.Gender.value;
+        let sold=form.sold.value;
+
+        let prod=new product(ProductName,Category,Image,price,Gender,sold)
+        console.log(prod)
+        arr.push(prod)
+
+        localStorage.setItem("products",JSON.stringify(arr));
+    }
+</script>
